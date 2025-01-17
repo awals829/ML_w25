@@ -21,6 +21,7 @@ Charlotte Curtis
 ## But first, some stuff about assessments
 - [Assignment 1](../../assignments/assignment1.md)
 - [Journal club guidelines](../../journal_club.md)
+- [Example](https://arxiv.org/abs/1503.03585) of a math-heavy paper
 - Additional references for papers:
     - [Google Scholar](https://scholar.google.com/)
     - [ArXiv](https://arxiv.org/)
@@ -68,7 +69,7 @@ For a function to be **differentiable** at a point $x_A$, it must be:
 
 <span style="font-size: 0.9em">
 
-|                 | Function $f$                 | Langrange               | Leibniz                                         |
+|                 | Function $f$                 | Lagrange               | Leibniz                                         |
 | --------------- | ---------------------------- | ----------------------- | ----------------------------------------------- |
 | **Constant**    | $f(x) = c$                   | $f'(x) = 0$             | $\dfrac{df}{dx} = 0$                             |
 | **Power**       | $f(x) = x^r$ with $r \neq 0$ | $f'(x) = rx^{r-1}$      | $\dfrac{df}{dx} = rx^{r-1}$                      |
