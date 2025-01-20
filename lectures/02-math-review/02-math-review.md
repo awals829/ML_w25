@@ -225,6 +225,84 @@ $$\mathbf{J_f} = \begin{bmatrix} \nabla^T f_1 \\ \nabla^T f_2 \\ \vdots \\ \nabl
 
 ---
 
-# Statistics
+# Statistics: Notation
 
-TBD...
+* A **random variable** $\mathrm{x} \sim P$ is a variable that can take on random variables according to some probability distribution $P$
+* $\mathrm{x}$ may take on **discrete** (e.g. dice rolls) or **continuous** (e.g. age) values
+* $X$ or $\mathrm{x}$ for the random variable and $x$ or $x_i$ for a specific value
+* $P(\mathrm{x})$ for a a discrete distribution and $p(\mathrm{x})$ for continuous
+* $\mathrm{x}_P \equiv \mathrm{x} \sim P$ and $\mathrm{x}_p \equiv \mathrm{x} \sim p$
+
+<div data-marpit-fragment>
+
+> Some textbooks/papers/websites use different notation!
+
+</div>
+
+---
+
+## Discrete random variables
+* A discrete **probability mass function** describes the probability of $\mathrm{x}$ taking on a specific value
+* Example: for a balanced 6-sided die, $P(\mathrm{x} = 1) = \dfrac{1}{6}$
+* You can add together probabilities, e.g. $P(\mathrm{x} \leq 3) = \sum\limits_{i=1}^3 P(\mathrm{x} = i)$
+* $\sum\limits_{x} P(\mathrm{x}) = 1$ and $P(x_i) \ge 0$ for any valid distribution
+
+
+---
+
+## Continuous random variables
+
+* A continuous **probability density function** gives the probability of being in some tiny interval $\delta x$ given by $p(x) \delta x$
+* Example: the **uniform distribution**, $p(\mathrm{x}) = \dfrac{1}{b-a}$ for $a \le x \le b$
+* $p(\mathrm{x} = x_i) = 0$ for any specific value $x_i$
+* Need to integrate to get a concrete value, e.g. $P(\mathrm{x} \le a) = \displaystyle\int_a^b p(x) dx$
+* $\displaystyle\int_{-\infty}^\infty p(x) dx = 1$ and $\displaystyle\int_a^b p(x) dx \ge 0$ for any valid distribution
+
+---
+
+## Expectation and variance
+* The **expectation** or **expected value** is its average value $\mathbb{E}[\mathrm{x}]$
+* $\mathbb{E}[\mathrm{x}_P] = \sum\limits_{x} x P(\mathrm{x})$ and $\mathbb{E}[\mathrm{x}_p] = \displaystyle\int_{-\infty}^\infty x p(x) dx$
+* More generally, for any function $f(\mathrm{x})$:
+$$\mathbb{E}[f(\mathrm{x})] = \sum_x f(x) P(\mathrm{x}) \hspace{1em}\mathrm{and}\hspace{1em} \int_{-\infty}^\infty f(x) p(x) dx$$
+* The **variance** describes how much the values vary from their mean:
+$$\mathrm{Var}[\mathrm{x}] = \mathbb{E}[(\mathrm{x} - \mathbb{E}[\mathrm{x}])^2]$$
+
+---
+
+## Multiple random variables
+* **Joint probability** $P(\mathrm{x}, \mathrm{y})$ is the probability of $\mathrm{x}$ and $\mathrm{y}$ occurring together
+* **Conditional probability** $P(\mathrm{x} = x \mid \mathrm{y} = y)$ is the probability that $\mathrm{x}$ takes on value $x$ given that $\mathrm{y} = y$ has already happened
+* In general, $P(\mathrm{x} = x \mid \mathrm{y} = y) = \dfrac{P(\mathrm{x} = x, \mathrm{y} = y)}{P(\mathrm{y} = y)}$
+* For **independent** variables, $P(\mathrm{x} = x \mid \mathrm{y} = y) = P(\mathrm{x} = x)$
+
+<footer>Note: I'm using uppercase P here, but it all applies to continuous distributions as well</footer>
+
+---
+
+## Covariance
+* The **covariance** between $f(\mathrm{x})$ and $g(\mathrm{y})$ gives a sense of how linearly related they are and how much they vary together:
+$$\mathrm{Cov}(f(\mathrm{x}), g(\mathrm{y})) = \mathbb{E}[(f(\mathrm{x}) - \mathbb{E}[f(\mathrm{x})])(g(\mathrm{y}) - \mathbb{E}[g(\mathrm{y})])]$$
+* Related to correlation as $\mathrm{Corr}(f(\mathrm{x}), g(\mathrm{y})) = \dfrac{\mathrm{Cov}(f(\mathrm{x}), g(\mathrm{y}))}{\sqrt{\mathrm{Var}(f(\mathrm{x}))\mathrm{Var}(g(\mathrm{y}))}}$
+* The **covariance matrix** of a random vector $\mathbf{x}$ is a square matrix where the $(i, j)$ element is the covariance between $x_i$ and $x_j$
+* The diagonal of the covariance matrix gives $\mathrm{Var}(x_i)$
+
+---
+
+## The Normal distribution
+
+$$N(x; u, \sigma^2) = \sqrt{\frac{1}{2\pi\sigma^2}}\exp^{\left(-\frac{1}{2\sigma^2}(x - \mu)^2\right)}$$
+
+Good "default choice" for two reasons:
+* The **central limit theorem** shows that the sum of many ($>30$ ish) independent random variables is normally distributed
+* Has the most **uncertainty** of any distribution with the same variance
+
+<div data-marpit-fragment>
+
+> We can't easily integrate $N(x)$, so numerical approximations are used
+
+</div>
+
+---
+
+![bg fit](../figures/02-normal_dist.png)
