@@ -255,7 +255,7 @@ $$\mathbf{J_f} = \begin{bmatrix} \nabla^T f_1 \\ \nabla^T f_2 \\ \vdots \\ \nabl
 * A continuous **probability density function** gives the probability of being in some tiny interval $\delta x$ given by $p(x) \delta x$
 * Example: the **uniform distribution**, $p(\mathrm{x}) = \dfrac{1}{b-a}$ for $a \le x \le b$
 * $p(\mathrm{x} = x_i) = 0$ for any specific value $x_i$
-* Need to integrate to get a concrete value, e.g. $P(\mathrm{x} \le a) = \displaystyle\int_a^b p(x) dx$
+* Need to integrate to get a concrete value, e.g. $p(\mathrm{x} \le a) = \displaystyle\int_a^b p(x) dx$
 * $\displaystyle\int_{-\infty}^\infty p(x) dx = 1$ and $\displaystyle\int_a^b p(x) dx \ge 0$ for any valid distribution
 
 ---
@@ -264,9 +264,9 @@ $$\mathbf{J_f} = \begin{bmatrix} \nabla^T f_1 \\ \nabla^T f_2 \\ \vdots \\ \nabl
 * The **expectation** or **expected value** is its average value $\mathbb{E}[\mathrm{x}]$
 * $\mathbb{E}[\mathrm{x}_P] = \sum\limits_{x} x P(\mathrm{x})$ and $\mathbb{E}[\mathrm{x}_p] = \displaystyle\int_{-\infty}^\infty x p(x) dx$
 * More generally, for any function $f(\mathrm{x})$:
-$$\mathbb{E}[f(\mathrm{x})] = \sum_x f(x) P(\mathrm{x}) \hspace{1em}\mathrm{and}\hspace{1em} \int_{-\infty}^\infty f(x) p(x) dx$$
+    $$\mathbb{E}[f(\mathrm{x})] = \sum_x f(x) P(\mathrm{x}) \hspace{1em}\mathrm{and}\hspace{1em} \int_{-\infty}^\infty f(x) p(x) dx$$
 * The **variance** describes how much the values vary from their mean:
-$$\mathrm{Var}[\mathrm{x}] = \mathbb{E}[(\mathrm{x} - \mathbb{E}[\mathrm{x}])^2]$$
+    $$\mathrm{Var}[\mathrm{x}] = \mathbb{E}[(\mathrm{x} - \mathbb{E}[\mathrm{x}])^2]$$
 
 ---
 
@@ -282,7 +282,7 @@ $$\mathrm{Var}[\mathrm{x}] = \mathbb{E}[(\mathrm{x} - \mathbb{E}[\mathrm{x}])^2]
 
 ## Covariance
 * The **covariance** between $f(\mathrm{x})$ and $g(\mathrm{y})$ gives a sense of how linearly related they are and how much they vary together:
-$$\mathrm{Cov}(f(\mathrm{x}), g(\mathrm{y})) = \mathbb{E}[(f(\mathrm{x}) - \mathbb{E}[f(\mathrm{x})])(g(\mathrm{y}) - \mathbb{E}[g(\mathrm{y})])]$$
+    $$\mathrm{Cov}(f(\mathrm{x}), g(\mathrm{y})) = \mathbb{E}[(f(\mathrm{x}) - \mathbb{E}[f(\mathrm{x})])(g(\mathrm{y}) - \mathbb{E}[g(\mathrm{y})])]$$
 * Related to correlation as $\mathrm{Corr}(f(\mathrm{x}), g(\mathrm{y})) = \dfrac{\mathrm{Cov}(f(\mathrm{x}), g(\mathrm{y}))}{\sqrt{\mathrm{Var}(f(\mathrm{x}))\mathrm{Var}(g(\mathrm{y}))}}$
 * The **covariance matrix** of a random vector $\mathbf{x}$ is a square matrix where the $(i, j)$ element is the covariance between $x_i$ and $x_j$
 * The diagonal of the covariance matrix gives $\mathrm{Var}(x_i)$

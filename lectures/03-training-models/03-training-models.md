@@ -102,8 +102,7 @@ where each row is an instance (sample) and each column is a feature.
 
 ## Back to the linear regression problem...
 * We can rewrite the estimate in matrix notation:
-
-$$\hat{\mathbf{y}} = \mathbf{X} \mathbf{\theta}$$
+    $$\hat{\mathbf{y}} = \mathbf{X} \mathbf{\theta}$$
 
 * The MSE can be written as:
 
@@ -202,7 +201,7 @@ The goal of gradient descent is still to minimize the cost function, but it foll
 * MSE is **convex** and guaranteed to have a single global minimum, but many other loss functions have multiple local minima
 * The relative scale of the features can affect the convergence:
 
-![h:200 center](../figures/feature_scaling.png)
+    ![h:200 center](../figures/feature_scaling.png)
 
 <footer>Figure from Scikit-Learn book</footer>
 
@@ -225,7 +224,12 @@ The goal of gradient descent is still to minimize the cost function, but it foll
     $$J(\mathbf{\theta}) = MSE(\mathbf{\theta}) + \alpha \frac{1}{2} \sum_{i=1}^n \theta_i^2$$
     where $\alpha$ is the **regularization parameter**
 * The regularization term is only added during training, not evaluation
+
+<div data-marpit-fragment>
+
 > Note: the term **cost** function is often used instead of **loss** function
+
+</div>
 
 ---
 
@@ -234,15 +238,17 @@ Logistic regression is a binary classifier that uses the **logistic function** (
 
 $$\sigma(t) = \frac{1}{1 + e^{-t}}$$
 
-resulting in the loss function (trust me on this one):
+We can then minimize the **log loss** or **cross-entropy** loss function:
 
 $$J(\mathbf{\theta}) = -\frac{1}{m} \sum_{i=1}^m \left[ y_i \log(\hat{p}_i) + (1 - y_i) \log(1 - \hat{p}_i) \right]$$
 
 where $\hat{p}_i = \sigma(\mathbf{\theta}^T \mathbf{x}_i)$ is the probability that instance $i$ is positive.
 
+<footer>More on cross-entropy loss when we talk about classification models</footer>
+
 ---
 
-The gradient of the loss function for logistic regression is:
+The gradient of the log loss ends up being:
 
 $$\nabla_{\mathbf{\theta}} J(\mathbf{\theta}) = \frac{1}{m} \sum_{i=1}^m \left( \sigma(\mathbf{\theta}^T \mathbf{x}_i) - y_i \right) \mathbf{x}_i$$
 
