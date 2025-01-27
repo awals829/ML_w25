@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="425.13586"
+   height="216.63788"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="mlp.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.0962528"
+     inkscape:cx="214.29129"
+     inkscape:cy="101.25142"
+     inkscape:window-width="2256"
+     inkscape:window-height="1422"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8"
+     showgrid="false" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.33237;stroke-opacity:1"
+     marker-end="url(#arrow)"
+     d="M 47.95611,164.27437 181.1936,57.684386"
+     id="path1" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.33237;stroke-opacity:1"
+     marker-end="url(#arrow)"
+     d="M 47.95611,57.684386 H 181.1936"
+     id="path2" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.33237;stroke-opacity:1"
+     marker-end="url(#arrow)"
+     d="M 181.1936,164.27437 314.43108,110.97939"
+     id="path3" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.33237;stroke-opacity:1"
+     marker-end="url(#arrow)"
+     d="M 181.1936,57.684386 314.43108,110.97939"
+     id="path4" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.33237;stroke-opacity:1"
+     marker-end="url(#arrow)"
+     d="M 47.95611,164.27437 H 181.1936"
+     id="path5" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.33237;stroke-opacity:1"
+     marker-end="url(#arrow)"
+     d="M 47.95611,57.684386 181.1936,164.27437"
+     id="path6" />
+  <circle
+     r="26.647497"
+     class="node"
+     id="0_0"
+     cx="-164.2744"
+     cy="47.956135"
+     style="fill:#ffffff;stroke:#333333;stroke-width:2.66475"
+     transform="rotate(-90)" />
+  <circle
+     r="26.647497"
+     class="node"
+     id="0_1"
+     cx="-57.684376"
+     cy="47.956135"
+     style="fill:#ffffff;stroke:#333333;stroke-width:2.66475"
+     transform="rotate(-90)" />
+  <circle
+     r="26.647497"
+     class="node"
+     id="1_0"
+     cx="-164.2744"
+     cy="181.19362"
+     style="fill:#ffffff;stroke:#333333;stroke-width:2.66475"
+     transform="rotate(-90)" />
+  <text
+     class="text"
+     dy="11.191948"
+     x="48.905586"
+     y="47.956135"
+     style="font-size:31.977px;stroke-width:2.66475"
+     id="text6"
+     transform="rotate(-90)" />
+  <text
+     class="text"
+     dy="11.191948"
+     x="48.905586"
+     y="181.19362"
+     style="font-size:31.977px;stroke-width:2.66475"
+     id="text7"
+     transform="rotate(-90)" />
+  <circle
+     r="26.647497"
+     class="node"
+     id="1_1"
+     style="fill:#ffffff;stroke:#333333;stroke-width:2.66475"
+     cx="-57.684376"
+     cy="181.19362"
+     transform="rotate(-90)" />
+  <path
+     class="link"
+     style="fill:none;stroke:#505050;stroke-width:1.332;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker14)"
+     marker-end="url(#arrow-3)"
+     d="m 314.43108,110.97939 66.64176,0.61854"
+     id="path4-7"
+     sodipodi:nodetypes="cc" />
+  <circle
+     r="26.647497"
+     class="node"
+     id="2_0"
+     style="fill:#ffffff;stroke:#333333;stroke-width:2.66475"
+     cx="-110.97942"
+     cy="314.43103"
+     transform="rotate(-90)" />
+  <text
+     class="text"
+     dy="11.191948"
+     x="48.905586"
+     y="314.43103"
+     style="font-size:31.977px;stroke-width:2.66475"
+     id="text8"
+     transform="rotate(-90)" />
+  <defs
+     id="defs8">
+    <marker
+       style="overflow:visible"
+       id="marker14"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1.5"
+       markerHeight="1.5"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path14" />
+    </marker>
+    <marker
+       id="arrow"
+       viewBox="0 -5 10 10"
+       markerWidth="7"
+       markerHeight="7"
+       orient="auto"
+       refX="40">
+      <path
+         d="M 0,-5 10,0 0,5"
+         style="fill:#505050;stroke:#505050"
+         id="path8" />
+    </marker>
+    <marker
+       id="arrow-3"
+       viewBox="0 -5 10 10"
+       markerWidth="7"
+       markerHeight="7"
+       orient="auto"
+       refX="40">
+      <path
+         d="M 0,-5 10,0 0,5"
+         style="fill:#505050;stroke:#505050"
+         id="path8-6" />
+    </marker>
+  </defs>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="-56.916786"
+     y="57.164173"
+     id="text10"><tspan
+       sodipodi:role="line"
+       id="tspan10"
+       x="-56.916786"
+       y="57.164173" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="175.15724"
+     y="64.867638"
+     id="text11"><tspan
+       sodipodi:role="line"
+       id="tspan11"
+       x="175.15724"
+       y="64.867638">Σ</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="175.15724"
+     y="171.45769"
+     id="text11-5"><tspan
+       sodipodi:role="line"
+       id="tspan11-3"
+       x="175.15724"
+       y="171.45769">Σ</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="308.39465"
+     y="118.16268"
+     id="text11-56"><tspan
+       sodipodi:role="line"
+       id="tspan11-2"
+       x="308.39465"
+       y="118.16268">Σ</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="393.0191"
+     y="116.8066"
+     id="text12"><tspan
+       sodipodi:role="line"
+       id="tspan12"
+       x="393.0191"
+       y="116.8066">ŷ</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="36.889484"
+     y="61.768974"
+     id="text13"><tspan
+       sodipodi:role="line"
+       id="tspan13"
+       x="36.889484"
+       y="61.768974">x₁</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332;stroke-dasharray:none"
+     x="36.889484"
+     y="168.35899"
+     id="text14"><tspan
+       sodipodi:role="line"
+       id="tspan14"
+       x="36.889484"
+       y="168.35899">x₂</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="96.03447"
+     y="52.603992"
+     id="text1"><tspan
+       sodipodi:role="line"
+       id="tspan1"
+       x="96.03447"
+       y="52.603992" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="90.729538"
+     y="159.19397"
+     id="text1-35"><tspan
+       sodipodi:role="line"
+       id="tspan1-62"
+       x="90.729538"
+       y="159.19397" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="118.39391"
+     y="9.3658791"
+     id="text1-3"
+     transform="rotate(38.887328)"><tspan
+       sodipodi:role="line"
+       id="tspan1-6"
+       x="118.39391"
+       y="9.3658791" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="-26.708092"
+     y="153.46054"
+     id="text1-3-7"
+     transform="rotate(-38.676026)"><tspan
+       sodipodi:role="line"
+       id="tspan1-6-5"
+       x="-26.708092"
+       y="153.46054" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="230.45497"
+     y="66.837341"
+     id="text2"><tspan
+       sodipodi:role="line"
+       id="tspan2"
+       x="230.45497"
+       y="66.837341" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="94.009811"
+     y="184.68645"
+     id="text5"><tspan
+       sodipodi:role="line"
+       id="tspan5"
+       x="94.009811"
+       y="184.68645"><tspan
+         style="font-weight:bold"
+         id="tspan3">W</tspan><tspan
+         style="font-size:65%;baseline-shift:super"
+         id="tspan4">(1)</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="239.34297"
+     y="184.68645"
+     id="text9"><tspan
+       sodipodi:role="line"
+       id="tspan6"
+       x="239.34297"
+       y="184.68645"><tspan
+         style="font-weight:bold"
+         id="tspan7">W</tspan><tspan
+         style="font-size:65%;baseline-shift:super"
+         id="tspan8">(2)</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="98.130211"
+     y="47.331657"
+     id="text15"><tspan
+       sodipodi:role="line"
+       id="tspan9"
+       x="98.130211"
+       y="47.331657" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20.1212px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono, Normal';fill:#000000;stroke-width:1.332"
+     x="243.68544"
+     y="-43.481239"
+     id="text16"><tspan
+       sodipodi:role="line"
+       id="tspan15"></tspan></text>
+</svg>
