@@ -3,6 +3,7 @@ marp: true
 paginate: true
 theme: marp-theme
 math: true
+title: Perceptrons and backpropagation
 ---
 
 <!-- 
@@ -18,10 +19,10 @@ Charlotte Curtis
 ---
 
 ## Overview
-* A brief review of the history of neural networks
-* Neurons, perceptrons, and multilayer perceptrons
-* Backpropagation
-* References and suggested reading:
+- A brief review of the history of neural networks
+- Neurons, perceptrons, and multilayer perceptrons
+- Backpropagation
+- References and suggested reading:
     - [Scikit-learn book](https://librarysearch.mtroyal.ca/discovery/fulldisplay?context=L&vid=01MTROYAL_INST:02MTROYAL_INST&search_scope=MRULibrary&isFrbr=true&tab=MRULibraryResources&docid=alma9923265933604656): Chapter 10, introduction to artificial neural networks
     - [Deep Learning Book](https://www.deeplearningbook.org/): Chapter 6, deep feedforward networks
 
@@ -118,7 +119,11 @@ Image source: Scikit-learn book
     A xor B = (A and !B) or (!A and B)
     ```
 * A perceptron can solve `and` and `or` and `not`... so what if the input to the `or` perceptron is the output of two `and` perceptrons?
-* :abacus: Verify the solution to XOR
+
+---
+
+## A solution to XOR
+![h:500 center](../figures/04-xor-solution.png)
 
 ---
 
@@ -131,14 +136,14 @@ Image source: Scikit-learn book
 ---
 
 ## Training MLPs with backpropagation
-1. Initialize the weights, usually randomly
-2. Perform a **forward pass** to compute the output of each neuron
-3. Compute the **loss** of the output layer (e.g. MSE)
-4. Calculate the **gradient of the loss** with respect to each weight
-5. Update the weights using gradient descent (minibatch, stochastic, etc)
-6. Repeat steps 2-5 until stopping criteria met
+1) Initialize the weights, through some random-ish strategy
+2) Perform a **forward pass** to compute the output of each neuron
+3) Compute the **loss** of the output layer (e.g. MSE)
+4) Calculate the **gradient of the loss** with respect to each weight
+5) Update the weights using gradient descent (minibatch, stochastic, etc)
+6) Repeat steps 2-5 until stopping criteria met
 
-> Step 4 is the "backpropagation" part
+    > Step 4 is the "backpropagation" part
 
 ---
 
@@ -149,8 +154,9 @@ Image source: Scikit-learn book
 
 * With a linear activation function:
     $$\mathbf{\hat{y}} = \mathbf{X} \mathbf{W}^{(1)} \mathbf{W}^{(2)}$$
-* For a single sample $\mathbf{x}$:
+* In summation notation for a single sample:
     $$\hat{y} = \sum_{j = 1}^{2} w_j^{(2)} \sum_{i = 1}^{2} x_i w_{ij}^{(1)}$$
+* In this case, $\hat{y} = 2.162$
 
 </div>
 <div>
@@ -168,8 +174,6 @@ $$\mathbf{W}^{(1)} = \begin{bmatrix}-0.78 & 0.13 \\ 0.85 & 0.23\end{bmatrix}, \m
 </div>
 </div>
 </div>
-
-:abacus: Solve for $\hat{y}$ using the values given
 
 ---
 
@@ -189,22 +193,48 @@ $$\mathbf{W}^{(1)} = \begin{bmatrix}-0.78 & 0.13 \\ 0.85 & 0.23\end{bmatrix}, \m
     $$\frac{\partial \mathcal{L}}{\partial w_{j}^{(2)}} = \frac{\partial{\mathcal{L}}}{\partial \hat{y}} \frac{\partial \hat{y}}{\partial w_{j}^{(2)}} = (\hat{y} - y) \frac{\partial \hat{y}}{\partial w_{j}^{(2)}} = (\hat{y} - y) \sum_{i} x_i w_{ij}^{(1)}$$
 
 * For the first layer (connecting inputs to hidden):
-    $$\frac{\partial{\mathcal{L}}}{\partial w_{ij}^{(1)}} = \left(\frac{\partial{\mathcal{L}}}{\partial \hat{y}} \frac{\partial \hat{y}}{\partial w_j^{(2)}}\right) \frac{\partial{w_j^{(2)}}}{\partial w_{ij}^{(1)}} = \left(\frac{\partial{\mathcal{L}}}{\partial \hat{y}} \frac{\partial \hat{y}}{\partial w_j^{(2)}}\right)x_i$$
----
+    $$\frac{\partial \mathcal{L}}{\partial w_{ij}^{(1)}} = \frac{\partial{\mathcal{L}}}{\partial \hat{y}} \frac{\partial \hat{y}}{h_j} \frac{\partial h_j}{\partial w_{ij}^{(1)}} = (\hat{y} - y) w_j^{(2)} x_i$$ 
+    where $h_j = x_iw_{ij}^{(1)}$ is the output of the hidden layer
 
-<!-- Made it this far in first class -->
+<footer>Note: in my original presentation, I forgot the w2 term in the equation for the first layer. Sorry for the confusion!</footer>
+
+---
 
 ## Bias terms
 * The toy example did not include bias terms, but these are very important (as seen in the perceptron examples)
 * With a single layer we can add a column of 1s to $\mathbf{X}$, but with multiple layers we need to add bias at **every layer**
 * The forward pass becomes:
     $$\mathbf{\hat{y}} = (\mathbf{X} \mathbf{W}^{(1)} + \mathbf{b}^{(1)}) \mathbf{W}^{(2)} + \mathbf{b}^{(2)}$$
-* The calculation of the gradient is fortunately unaffected, but network size increases as weights for the bias terms need to be updated as well
+* Or in summation form:
+    $$\hat{y} = \sum_{j = 1}^{2} w_j^{(2)} \left(\sum_{i = 1}^{2} x_i w_{ij}^{(1)} + b^{(1)}\right) + b^{(2)}$$
+
+---
+
+## Gradient with respect to the bias terms
+* For layer 2 (the output layer):
+
+$$\frac{\partial \mathcal{L}}{\partial b_{j}^{(2)}} = \frac{\partial{\mathcal{L}}}{\partial \hat{y}} \frac{\partial \hat{y}}{\partial b^{(2)}} = (\hat{y} - y)(1)$$
+
+* For layer 1:
+  $$\frac{\partial \mathcal{L}}{\partial b^{(1)}} = \frac{\partial{\mathcal{L}}}{\partial \hat{y}} \frac{\partial \hat{y}}{h} \frac{\partial h}{\partial b^{(1)}} = (\hat{y} - y) \sum_{i} w_{ij}^{(2)}$$
+
+  where $h = \sum_{i} x_i w_{ij}^{(1)} + b^{(1)}$ is the input to the hidden layer
+
+---
+
+## Summary in matrix form
+| Parameter         | Gradient                                                                  |
+|-------------------|--------------------------------------------------------------------------------------|
+| Weights of layer 2| $\dfrac{\partial \mathcal{L}}{\partial \mathbf{W}^{(2)}} = (\hat{y} - y) (\mathbf{X} \mathbf{W}^{(1)} + \mathbf{b}^{(1)})$ |
+| Bias of layer 2   | $\dfrac{\partial \mathcal{L}}{\partial \mathbf{b}^{(2)}} = (\hat{y} - y)$                                                |
+| Weights of layer 1| $\dfrac{\partial \mathcal{L}}{\partial \mathbf{W}^{(1)}} = (\hat{y} - y) \mathbf{W}^{(2)} \mathbf{X}$                    |
+| Bias of layer 1   | $\dfrac{\partial \mathcal{L}}{\partial \mathbf{b}^{(1)}} = (\hat{y} - y) \mathbf{W}^{(2)}$                                |
+
 
 ---
 
 ## Computational considerations
-* Many of the terms computed in the **forward pass** are reused in the **backward pass**
+* Many of the terms computed in the **forward pass** are reused in the **backward pass** (such as the inputs to each layer)
 * Similarly, gradients computed in layer $l+1$ are reused in layer $l$
 * Typically each intermediate value is stored, but modern networks are **big**
 
@@ -231,10 +261,11 @@ _paginate: skip
 ## Activation functions
 * The simple example used a **linear activation function** (identity)
 * To include other activation functions, the forward pass becomes:
-    $$\mathbf{\hat{y}} = \mathbf{f_2}(\mathbf{f_1}(\mathbf{X} \mathbf{W}^{(1)}) \mathbf{W}^{(2)})$$
+    $$\mathbf{\hat{y}} = \mathbf{f_2}(\mathbf{f_1}(\mathbf{X} \mathbf{W}^{(1)} + \mathbf{b}^{(1)}) \mathbf{W}^{(2)} + \mathbf{b}^{(2)})$$
 
 * The gradient in the output layer becomes:
-    $$\frac{\partial \mathcal{L}}{\partial w_{j}^{(2)}} = \frac{\partial{\mathcal{L}}}{\partial f_2} \frac{\partial f_2}{\partial \hat{y}}\frac{\partial{\hat{y}}}{\partial{w_j^{(2)}}}$$
+    $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(2)}} = \frac{\partial \mathcal{L}}{\partial \mathbf{f_2}} \frac{\partial \mathbf{f_2}}{\partial \mathbf{z}^{(2)}} \frac{\partial \mathbf{z}^{(2)}}{\partial \mathbf{W}^{(2)}}$$
+    where $\mathbf{z}^{(2)} = \mathbf{f_1}(\mathbf{X} \mathbf{W}^{(1)} + \mathbf{b}^{(1)}) \mathbf{W}^{(2)} + \mathbf{b}^{(2)}$, or the summation the second layer before applying the activation function
 * Problem! That step function in the original perceptron is not differentiable
 
 ---
