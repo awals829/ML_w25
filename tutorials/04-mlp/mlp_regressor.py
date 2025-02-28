@@ -15,9 +15,21 @@ D_F = {
     "tanh": lambda x: 1 - np.tanh(x) ** 2,
 }
 
+L = {
+    "mse": lambda y, y_est: np.mean((y - y_est) ** 2),
+    "cross_entropy": lambda y, p_hat: -np.mean(
+        y * np.log(p_hat) + (1 - y) * np.log(1 - p_hat)
+    ),
+}
+
+D_L = {
+    "mse": lambda y, y_est: y_est - y,
+    "cross_entropy": lambda y, p_hat: -(y / p_hat + (1 - y) / (1 - p_hat)),
+}
+
 
 class MLPRegressor:
-    def __init__(self, n_inputs: int):
+    def __init__(self, n_inputs: int, loss: str = "mse"):
         """
         Initialize a new multi-layer perceptron with the specified number of inputs.
         """
@@ -31,6 +43,9 @@ class MLPRegressor:
 
         # and strings to keep track of activation functions
         self.activations = []
+
+        # loss function
+        self.loss = loss
 
     def __repr__(self):
         """
@@ -52,9 +67,9 @@ class MLPRegressor:
         Add a new layer with n_neurons and the given activation function.
         Initialize corresponding weight matrix to random values.
         """
-        std_he = np.sqrt(2 / n_neurons)
-        self.weights.append(np.random.randn(self.dims[-1], n_neurons) * std_he)
-        self.biases.append(np.random.randn(n_neurons) * std_he)
+        std_glorot = np.sqrt(2 / (self.dims[-1] + n_neurons))
+        self.weights.append(np.random.randn(self.dims[-1], n_neurons) * std_glorot)
+        self.biases.append(np.zeros(n_neurons))
         self.activations.append(activation)
 
         # self.n_inputs has 1 more element than the other lists
@@ -94,7 +109,7 @@ class MLPRegressor:
                 f"Expected y with {y_est.shape[0]} samples, but got {y.shape[0]}"
             )
 
-        d_prev = y_est - y
+        d_prev = D_L[self.loss](y, y_est)
 
         # loop backwards
         for i in reversed(range(len(self.activations))):
@@ -121,17 +136,23 @@ class MLPRegressor:
             self.biases[i] -= eta * d_b / y.shape[0]
 
     def train(
-        self, X: np.ndarray, y: np.ndarray, eta: float, epochs: int, batch_size: int = None
+        self, X: np.ndarray, y: np.ndarray, eta: float, epochs: int, batch_size: int
     ) -> np.ndarray:
         """
-        Perform gradient descent to train model.
-        TODO: Modify the training loop to update one batch at a time.
+        Perform batch gradient descent to train model
         """
+
+        batches_per_epoch = X.shape[0] // batch_size
+
         loss = np.zeros(epochs)
         for epoch in range(epochs):
+            for _ in range(batches_per_epoch):
+                batch = np.random.choice(range(0, X.shape[0]), batch_size)
+                y_est_b = self.forward(X[batch, :])
+                self.backward(eta, y_est_b, y[batch])
+
             y_est = self.forward(X)
-            self.backward(eta, y_est, y)
-            loss[epoch] = np.mean((y_est - y) ** 2)
+            loss[epoch] = L[self.loss](y, y_est)
 
         return loss
 
@@ -154,7 +175,7 @@ if __name__ == "__main__":
     y = y[:, np.newaxis]
 
     mlp = MLPRegressor(xor_in.shape[1])
-    mlp.add_layer(1, "tanh")
+    mlp.add_layer(2, "tanh")
     mlp.add_layer(1, "tanh")
     print(mlp)
 
@@ -164,17 +185,18 @@ if __name__ == "__main__":
     mlp.weights[1] = np.array([[-1], [1]])
     mlp.biases[0] = np.array([-3 / 2, -1 / 2])
     mlp.biases[1] = -1 / 2
-    print(mlp.forward(xor_in))  # good enough, would work with threshold
+    print(mlp.forward(xor_in) > 0)  # good enough, would work with threshold
 
     # Reset and train
+    np.random.seed(12345)
     mlp = MLPRegressor(xor_in.shape[1])
-    mlp.add_layer(1, "tanh")
-    mlp.add_layer(1, "tanh")
-    loss = mlp.train(xor_in, y, 0.1, 50)
+    mlp.add_layer(2, "tanh")
+    mlp.add_layer(1, "sigmoid")
+    loss = mlp.train(xor_in, y, 0.2, 2000, 4)
 
-    print(mlp.forward(xor_in))
+    print(mlp.forward(xor_in) > 0.5)
     # take a look at the training curve
     plt.plot(loss)
     plt.xlabel("Epoch")
-    plt.ylabel("Mean squared error")
+    plt.ylabel("Loss (binary cross-entropy)")
     plt.show()
